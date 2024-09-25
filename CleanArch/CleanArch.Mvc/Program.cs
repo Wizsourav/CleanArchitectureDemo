@@ -19,6 +19,8 @@ builder.Services.AddDbContext<UniversityDBContext>(options =>
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Program>());
 DependencyContainer.RegisterServices(builder.Services);
 var app = builder.Build();
 
